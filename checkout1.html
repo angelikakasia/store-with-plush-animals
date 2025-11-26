@@ -99,10 +99,11 @@ document.addEventListener("DOMContentLoaded", function () { // it waits until th
 
   console.log("Saved data:", saved);  // DEBUG doesnt work
 
-  if (!saved) {
-    document.getElementById("checkoutItems").innerHTML = "<p>No items in cart.</p>";
-    return; //STOPS running the rest of the function (return ends it)
-  }
+if (!saved) {
+  console.log("No saved cartItems found");
+  return;
+}
+
 
   const items = JSON.parse(saved); //JSON = JavaScript Object Notation
   // JSON  turns a string of text into a JavaScript object, and inside that object, the values already keep their correct types.

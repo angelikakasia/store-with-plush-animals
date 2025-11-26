@@ -38,26 +38,28 @@ document.querySelectorAll(".item-quantity").forEach(select => { // for each func
 
 // SAVE ITEMS FOR CHECKOUT
 
-function saveItemsToLocalStorage() { // saves the cart items before going to checkout. the thing that doesnt work for me on my checkout
-  const items = []; //an empty array where I store all cart items - but it doesnt work 
+function saveItemsToLocalStorage() {                    // Start: function that saves all cart items before going to checkout
+  const items = [];                                     // Create an empty array — we'll store each product here
 
-  document.querySelectorAll(".cart-item1").forEach(item => { //for each loops through every product 
-    const name = item.querySelector(".item-description").textContent.trim(); // Get the product name (e.g., "Panda") .trim() removes invisible spaces.
-    const price = Number(item.querySelector(".item-price").textContent.replace("$", "")); // Gets the price, remove the dollar sign, convert it to number.
-    const qty = Number(item.querySelector(".item-quantity").value); //Gets the RIGHT-side input / dropdown value (actual quantity user selected).
+  document.querySelectorAll(".cart-item1").forEach(item => {   // Loop through EVERY product box in the cart
+    const name = item.querySelector(".item-description").textContent.trim();  // Get the product name (e.g., "Panda"), trim removes extra spaces
 
-    if (qty > 0) items.push({ name, price, quantity: qty }); //Only add the item to the items array if quantity > 0.
+    const price = Number(item.querySelector(".item-price").textContent.replace("$", "")); // Get the price, remove the "$", convert it from string → number
+
+    const qty = Number(item.querySelector(".item-quantity").value); // Get the selected quantity from the RIGHT input box (string → number)
+
+    if (qty > 0) {                                        // Only save items that have quantity greater than zero
+      items.push({ name, price, quantity: qty });         // Add a JS object to the array, e.g. { name: "Panda", price: 16.99, quantity: 2 }
+    }
   });
 
-  if (items.length === 0) { // If NO items have quantity > 0, show an alert and STOP.
-    alert("Your cart is empty!");
-    return; 
-  }
+  console.log("Saving to localStorage:", items);          // Debug: print the items to console so we can check what will be saved
 
-  console.log("Saving:", items); //Prints the items to the console so I  can debug. 
-  localStorage.setItem("cartItems", JSON.stringify(items)); //saves all items to localStorage there is also json
-  window.location.href = "checkout1.html"; //Takes the user to the checkout page.
+  localStorage.setItem("cartItems", JSON.stringify(items));// Convert the array → JSON string and save it under the key "cartItems"
+
+  window.location.href = "checkout1.html";                // Redirect user to the checkout page AFTER saving the cart
 }
+
 
 
 // SUMMARY UPDATE
