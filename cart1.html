@@ -109,31 +109,25 @@
             <div class="item-price">$13.99</div>
         </div>
     <hr />
-        
-    <!-- Summary  -->
-    <div class="summary1" id="summarySection1">
+   <!-- Summary  -->
+<div class="summary1" id="summarySection1">
     <p><strong>Sub-Total</strong> <span id="itemCount1">5 items</span></p>
     <h3 id="subtotalAmount">$84.95</h3>
 
+    <!-- REAL WORKING CHECKOUT BUTTON -->
     <button id="checkoutBtn1">Checkout</button>
+</div>
 
-   <script>
-document.getElementById("checkoutBtn1").addEventListener("click", saveItemsToLocalStorage);
-</script>
+</div> <!-- closes container -->
+</div> <!-- closes header -->
 
+<!--  MAIN JAVASCRIPT FILE -->
+<script src="script1.js"></script>
 
-
-    </div>
-
-        
-   
-    </div> <!--closes container-->
-</div> <!--closes header-->
-    <script src="script1.js"></script>
 <script>
+  // Update subtotal when page loads
   window.addEventListener("load", () => {
-    updateSubtotal(); //It calculates the subtotal immediately once I add items
-    
+    updateSubtotal();
   });
 </script>
 
