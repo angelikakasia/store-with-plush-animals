@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Checkout Page</title>
+<link rel="stylesheet" href="style1.css">
+
+<style>
+   body {
+      background-color: #1c1c1c;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+   }
+
+   .checkout-container {
+      background-color: #ebd9d9;
+      width: 420px;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      margin: 60px auto;
+      text-align: left;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .summary-section {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      margin: 15px 0;
+    }
+
+    .checkout-item {
+       background: #f1d3ed;
+       padding: 10px;
+       margin: 10px 0;
+       border-radius: 6px;
+       line-height: 1.4;
+    }
+
+    .back-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: #9ec9ff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      color: black;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #3275da;
+      color: white;
+    }
+</style>
+
+</head>
+<body>
+
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+
+    <p>Thank you for your purchase! Below is a quick summary of your order:</p>
+
+    <div class="summary-section">
+      <p><strong> Items Purchased:</strong></p>
+
+      <div id="checkoutItems"></div>
+
+      <div id="grandTotal" style="margin-top:15px; font-weight:bold;"></div>
+    </div>
+
+    <div class="checkout-details">
+      <p><strong>Next steps:</strong></p>
+      <p>Billing and shipping details will appear here in the next lab project.
+         You'll be able to enter payment information and confirm delivery.</p>
+    </div>
+
+    <a href="cart1.html">
+      <button class="back-btn">Back to Cart</button>
+    </a>
+  </div>
+
+
+     <!--this doesnt work --> 
+  <!-- Checkout logic -->
+ <script>
+document.addEventListener("DOMContentLoaded", function () { // it waits until the HTML is fully loaded — then runs this script.
+  const saved = localStorage.getItem("cartItems"); //this should read the value stored under the key "cartItems
+
+  console.log("Saved data:", saved);  // DEBUG doesnt work
+
+  if (!saved) {
+    document.getElementById("checkoutItems").innerHTML = "<p>No items in cart.</p>";
+    return; //STOPS running the rest of the function (return ends it)
+  }
+
+  const items = JSON.parse(saved); //JSON = JavaScript Object Notation
+  // JSON  turns a string of text into a JavaScript object, and inside that object, the values already keep their correct types.
+
+//   if (items.length === 0) {
+//     document.getElementById("checkoutItems").innerHTML = "<p>No items in cart.</p>";
+//     return;
+//   }
+
+  let output = "";
+  let total = 0; //output will become the HTML with all items ; total will store the sum of all item prices
+
+  items.forEach(item => { //goes through each saved item
+    const itemTotal = item.price * item.quantity; // If Lemur costs $14.99 and quantity is 3 -> itemTotal = 44.97
+    total += itemTotal; //Adds to the global total
+
+
+    // ${item.name} inserts the text (Panda); ${item.quantity} inserts quantity ${itemTotal.toFixed(2)} formats price: 44.97 -> "44.97" (2 decimals)
+    output += `
+      <div class="checkout-item">
+        <div class="item-description">${item.name}</div>
+        <div class="quantity">Qty: ${item.quantity}</div>
+        <div class="item-price">$${itemTotal.toFixed(2)}</div>
+      </div>`; 
+    
+  });
+
+  document.getElementById("checkoutItems").innerHTML = output; //This replaces the <div id="checkoutItems"> content
+  document.getElementById("grandTotal").innerText = "Total: $" + total.toFixed(2); //Formats the grand total
+});
+</script>
+
+
+</body>
+</html>

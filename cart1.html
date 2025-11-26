@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!--AWESOME FONT-->
+</head>
+
+<body>
+<div class="header">
+
+    <!-- AWESOME FONT used for hot symbols -->
+    <h1><i class="fas fa-heart"></i> Bluberry Toys <i class="fas fa-heart"></i> </h1>
+    <h4><i class="fas fa-star"></i> Stuffed Animals <i class="fas fa-star"></i> </h4>
+    <div class="container" id="container">
+
+        <h2 id="cartHeading1">Shopping Cart</h2>
+
+        <!-- REMOVE ITEMS -->
+        <div class="cart-actions1">
+        <a href="#" class="remove-all1" id="removeAllLink1">Remove all</a>
+        <a href="cart1.html" id="restoreBtn1">Continue Shopping</a>
+        </div>
+
+
+        <!-- STUFFED PETS TO BUY-->
+    <div class="cart-item1" data-index="1" id="item1">
+
+            <div class="petcounter">
+                <img class="item-image" src="https://cdn11.bigcommerce.com/s-9saznil5k4/images/stencil/1280x1280/products/8166/20063/68493__39426.1728669918.jpg?c=1" alt="Panda" />
+                <div class="quantity-controls">
+                    <button class="qty-plus">+</button>
+                    <span class="qty1">1</span>
+                    <button class="qty-minus" >−</button>
+                </div> 
+            </div>
+
+            <div class="item-description" id="item1Description">Panda</div>
+            <input class="item-quantity" type="number" value="1" min="0" />
+            <div class="item-price">$16.99</div>
+        </div>    
+        
+    <div class="cart-item1" data-index="2" id="item2">
+
+            <div class="petcounter">
+                <img class="item-image" src="https://cdn11.bigcommerce.com/s-9saznil5k4/images/stencil/1280x1280/products/7910/24191/68390_alt2__51236.1663949831.jpg?c=1" alt="Red Panda" />
+                <div class="quantity-controls">
+                    <button class="qty-plus">+</button>
+                    <span class="qty1">1</span>
+                    <button class="qty-minus">−</button>
+                </div> 
+            </div>
+
+            <div class="item-description" id="item2Description">Red Panda</div>
+            <input class="item-quantity" type="number" value="1" min="0" />
+            <div class="item-price">$20.99</div>
+        </div>
+            
+
+    <div class="cart-item1" data-index="3" id="item3">
+
+            <div class="petcounter">
+                <img class="item-image" src="https://cdn11.bigcommerce.com/s-9saznil5k4/images/stencil/1280x1280/products/10156/28066/10000149__47723.1745609391.jpg?c=1" alt="Lemur" />
+                <div class="quantity-controls">
+                    <button class="qty-plus">+</button>
+                    <span class="qty1">1</span>
+                    <button class="qty-minus">−</button>
+                </div> 
+            </div>
+            <div class="item-description" id="item3Description">Lemur</div>
+            <input class="item-quantity" type="number" value="1" min="0" />
+            <div class="item-price">$14.99</div>
+        </div>
+            
+
+
+    <div class="cart-item1" data-index="4" id="item4">
+
+            <div class="petcounter">
+                <img class="item-image" src="https://cdn11.bigcommerce.com/s-9saznil5k4/images/stencil/1280x1280/products/10183/28116/10000213_alt3__54036.1746116420.jpg?c=1" alt="Flamingo" />
+                <div class="quantity-controls">
+                    <button class="qty-plus">+</button>
+                    <span class="qty1">1</span>
+                    <button class="qty-minus">−</button>
+                </div> 
+            </div>
+
+            <div class="item-description" id="item4Description">Flamingo</div>
+            <input class="item-quantity" type="number" value="1" min="0" />
+            <div class="item-price">$17.99</div>
+        </div>
+                
+
+        <div class="cart-item1" data-index="5" id="item5">
+
+            <div class="petcounter">
+                <img class="item-image" src="https://cdn11.bigcommerce.com/s-9saznil5k4/images/stencil/1280x1280/products/9178/24164/68624__72018.1663949904.jpg?c=1" alt="Fennec Fox" />
+                <div class="quantity-controls">
+                    <button class="qty-plus">+</button>
+                    <span class="qty1">1</span>
+                    <button class="qty-minus">−</button>
+                </div> 
+            </div>
+
+            <div class="item-description" id="item5Description">Fennec Fox</div>
+            <input class="item-quantity" type="number" value="1" min="0" />
+            <div class="item-price">$13.99</div>
+        </div>
+    <hr />
+        
+    <!-- Summary  -->
+    <div class="summary1" id="summarySection1">
+    <p><strong>Sub-Total</strong> <span id="itemCount1">5 items</span></p>
+    <h3 id="subtotalAmount">$84.95</h3>
+
+    <button id="checkoutBtn1">Checkout</button>
+
+        <script>
+        document.getElementById("checkoutBtn1").addEventListener("click", function () {
+            saveItemsToLocalStorage();
+        });
+        </script>
+
+    </div>
+
+        
+   
+    </div> <!--closes container-->
+</div> <!--closes header-->
+    <script src="script1.js"></script>
+<script>
+  window.addEventListener("load", () => {
+    updateSubtotal(); <!--It calculates the subtotal immediately once I add items-->
+    
+  });
+</script>
+
+</body>
+</html>
