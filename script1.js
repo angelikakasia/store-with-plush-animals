@@ -91,3 +91,10 @@ function updateSubtotal() { //Starts the function that updates subtotal and item
 document.addEventListener("DOMContentLoaded", function () {
   updateSubtotal(); //immediately calculate subtotal.
 });
+// CONNECT THE CHECKOUT BUTTON TO SAVING THE CART
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("checkoutBtn1");  // get the button by correct ID
+  if (btn) {
+    btn.addEventListener("click", saveItemsToLocalStorage); // attach the click event
+  }
+});
